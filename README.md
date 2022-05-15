@@ -1,23 +1,46 @@
-# Next.js + Tailwind CSS Example
+# Live Demo
+https://jiro-hotell.herokuapp.com/
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+# To run locally
+- cd to the root directory and type "npm run dev" to start
+- 
+# Features
+## Customer Features
+- customer can edit personal information
+- customer can change password
+- customer can request cancellation booking
+- customer can book rooms
 
-## Deploy your own
+## Admin Features
+- admin can view the reservation reports
+- admin can view the cancellation reports
+- admin can view the payment reports
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## Receptionist 
+- receptionist can view the reserved list 
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+## Manager
+- manager can view the available rooms
 
-## How to use
+# Link for user access role
+https://jiro-hotell.herokuapp.com/role/
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Accounts and directory
+username: admin
+password: 123
+paths: /admin
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app -- --example with-tailwindcss with-tailwindcss-app
-```
+username: manager
+password: 123
+paths: /manager
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+username: receptionist
+password: 123
+paths: /receptionist
+
+username: housekeeping
+password: 123
+paths: /housekeeping
+
+
+
