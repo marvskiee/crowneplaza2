@@ -1,5 +1,5 @@
 # Live Demo
-https://jiro-hotell.herokuapp.com/
+https://crowneplaza.herokuapp.com/
 
 # To run locally
 - cd to the root directory and type "npm run dev" to start
@@ -23,7 +23,7 @@ https://jiro-hotell.herokuapp.com/
 - manager can view the available rooms
 
 # Link for user access role
-https://jiro-hotell.herokuapp.com/role/
+https://crowneplaza.herokuapp.com/role/
 
 ## Accounts and directory
 username: admin
