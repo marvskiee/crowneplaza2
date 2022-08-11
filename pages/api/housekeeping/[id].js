@@ -8,7 +8,7 @@ export default async (req, res) => {
     query: { id },
     method,
   } = req
-
+  //
   switch (method) {
     case 'GET':
       try {
