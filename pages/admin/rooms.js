@@ -1,46 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
-import { AdminMain, AdminSidebar } from '../../components'
+import { useAppContext } from '../../context/AppContext'
+import { AdminMain, AdminSidebar, VoucherModal } from '../../components'
+import { getAllAccommodation } from '../../services/accommodation.services'
 
 const Rooms = () => {
+  const { state, dispatch } = useAppContext()
+
   const data_headers = [
     {
       name: 'ID No#',
-      key: 'id',
+      key: '_id',
     },
     {
-      name: 'Name',
-      key: 'name',
+      name: 'Room Name',
+      key: 'roomName',
     },
     {
-      name: 'No',
-      key: 'no',
-    },
-    {
-      name: 'Floor',
-      key: 'floor',
+      name: 'Room No#',
+      key: 'roomNo',
     },
     {
       name: 'Rate',
-      key: 'rate',
+      key: 'price',
     },
   ]
-  const data_items = [
-    {
-      id: '10001',
-      name: 'Presidential Suite',
-      no: '201-207',
-      floor: '2nd floor',
-      rate: '12,000',
-    },
-    {
-      id: '10002',
-      name: 'Standard Suite',
-      no: '301-307',
-      floor: '3nd floor',
-      rate: '2,000',
-    },
-  ]
+  useEffect(async () => {
+    dispatch({ type: 'CLEAR_SELECTED_DATA' })
+    const { success, data } = await getAllAccommodation()
+    if (success) {
+      dispatch({ type: 'SET_SELECTED_DATA', value: data })
+    }
+  }, [])
   return (
     <>
       <Head>
@@ -48,9 +39,10 @@ const Rooms = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminMain
+        searchKey="roomName"
         title="Rooms"
         data_headers={data_headers}
-        data_items={data_items}
+        data_items={state.selectedData}
       />
     </>
   )

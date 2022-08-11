@@ -9,7 +9,9 @@ export default async (req, res) => {
   switch (method) {
     case 'GET':
       try {
-        const reservation = await Reservation.find()
+        const reservation = await Reservation.find({
+          status: { $in: ['approved', 'checkedIn', 'checkedOut', 'reserved'] },
+        })
         res.status(200).json({
           success: true,
           data: reservation,

@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import React, { useEffect } from 'react'
 import { Footer, Header, Loading } from '../../../components'
 import { useAppContext } from '../../../context/AppContext'
-import { getAllReservation } from '../../../services/reservation.services'
+import { getCustomerReservation } from '../../../services/reservation.services'
 import moment from 'moment'
 const History = () => {
   const { state, dispatch } = useAppContext()
@@ -11,7 +12,7 @@ const History = () => {
   useEffect(async () => {
     dispatch({ type: 'RESERVATION_HISTORY_REQUEST' })
     if (access_id) {
-      const res = await getAllReservation(access_id)
+      const res = await getCustomerReservation(access_id)
       if (res.success) {
         setTimeout(() => {
           dispatch({ type: 'RESERVATION_HISTORY_SUCCESS', value: res.data })
@@ -21,6 +22,11 @@ const History = () => {
       dispatch({ type: 'RESERVATION_HISTORY_ERROR' })
     }
   }, [access_id])
+  const formatTotal = (x) => {
+    if (x != undefined) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    }
+  }
   return (
     <>
       <Head>
@@ -53,8 +59,9 @@ const History = () => {
                           noOfExtraBed,
                           noOfChildren,
                           noOfAdult,
-                          accomodationName,
                           status,
+                          image,
+                          roomType,
                           total,
                         },
                         index
@@ -64,14 +71,17 @@ const History = () => {
                           className="flex flex-col md:flex-row md:items-center md:gap-4"
                         >
                           <div>
-                            <img
-                              src="/pres_suite.jpg"
-                              className="h-80 w-80 rounded-lg object-cover drop-shadow-md"
+                            <Image
+                              height={250}
+                              width={400}
+                              src={image || '/thumbnail.png'}
+                              alt={roomType}
+                              className="aspect-video w-full rounded-lg object-cover drop-shadow-md sm:w-72"
                             />
                           </div>
                           <div className="py-4 md:p-4">
                             <div>
-                              <p className="my-2 text-xl">{accomodationName}</p>
+                              <p className="my-2 text-xl">{roomType}</p>
                               <p>
                                 1 room,{' '}
                                 {`${
@@ -91,10 +101,10 @@ const History = () => {
                                 {moment(checkOut).format('MMM DD YYYY')}
                               </p>
                               <p className="my-3 text-xl text-slate-900">
-                                Total: &#8369; {total}
+                                Total: &#8369; {formatTotal(total)}
                               </p>
                             </div>
-                            {status == 'Reserved' ? (
+                            {status == 'reserved' ? (
                               <div className="flex gap-4">
                                 <p
                                   className="
@@ -115,7 +125,7 @@ const History = () => {
                                   </button>
                                 </Link>
                               </div>
-                            ) : status == 'Not paid' ? (
+                            ) : status == 'approved' ? (
                               <div className="flex gap-4">
                                 <p
                                   className="

@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
+import { useAppContext } from '../../context/AppContext'
 import { AdminMain, AdminSidebar } from '../../components'
+import { getAllStaff } from '../../services/staff.services'
+import { adminSearches } from '../../services/admin.services'
 
 const Guests = () => {
+  const { state, dispatch } = useAppContext()
+
   const data_headers = [
     {
       name: 'ID No#',
-      key: 'id',
+      key: '_id',
     },
     {
       name: 'Email',
@@ -21,26 +26,17 @@ const Guests = () => {
       key: 'name',
     },
     {
-      name: 'Number',
-      key: 'number',
+      name: 'Contact',
+      key: 'contact',
     },
   ]
-  const data_items = [
-    {
-      id: '10001',
-      email: 'johndow@gmail.com',
-      name: 'John Doe',
-      number: '89',
-      username: '@johndoe',
-    },
-    {
-      id: '10002',
-      email: 'steveharve@gmail.com ',
-      name: 'Steve Harvey',
-      number: '90',
-      username: '@steveHarvey',
-    },
-  ]
+  useEffect(async () => {
+    dispatch({ type: 'CLEAR_SELECTED_DATA' })
+    const { success, data } = await getAllStaff('guest')
+    if (success) {
+      dispatch({ type: 'SET_SELECTED_DATA', value: data })
+    }
+  }, [])
   return (
     <>
       <Head>
@@ -49,8 +45,9 @@ const Guests = () => {
       </Head>
       <AdminMain
         title="Guests"
+        searchKey="email"
         data_headers={data_headers}
-        data_items={data_items}
+        data_items={state.selectedData}
       />
     </>
   )

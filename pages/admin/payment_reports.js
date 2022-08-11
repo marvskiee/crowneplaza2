@@ -29,20 +29,6 @@ const Payment = () => {
       key: 'total',
     },
   ]
-  const data_items = [
-    {
-      id: '10001',
-      reference: '00818237681',
-      channel: 'Gcash',
-      amount: '28000',
-    },
-    {
-      id: '10002',
-      reference: '87156781548787',
-      channel: 'Bank Transfer',
-      amount: '12000',
-    },
-  ]
   return (
     <>
       <Head>
@@ -50,6 +36,7 @@ const Payment = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminMain
+        searchKey="_id"
         title="Payment Reports"
         data_headers={data_headers}
         data_items={data}

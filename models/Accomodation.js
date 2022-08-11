@@ -1,11 +1,12 @@
 const mongoose = require('mongoose')
 
 const AccomodationSchema = new mongoose.Schema({
-  name: {
+  roomName: {
     type: String,
+    unique: true,
     required: [true, 'Please fill up this field'],
   },
-  details: {
+  description: {
     type: String,
     required: [true, 'Please fill up this field'],
   },
@@ -13,10 +14,20 @@ const AccomodationSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Please fill up this field'],
   },
-  status: {
-    type: Boolean,
+  roomNo: {
+    type: [{ type: String }],
     required: [true, 'Please fill up this field'],
-    default: true,
+  },
+  roomStatus: {
+    type: String,
+    required: [true, 'Please fill up this field'],
+  },
+  note: {
+    type: String,
+    required: [true, 'Please fill up this field'],
+  },
+  image: {
+    type: String,
   },
 })
 

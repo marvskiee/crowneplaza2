@@ -1,9 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
-import { RoleHeader } from '../../components'
-import Maintenance from '../../components/Layout/Maintenance'
+import { Calendar, RoleHeader } from '../../components'
 
-const Calendar = () => {
+const CalendarHousekeeping = () => {
   return (
     <>
       <Head>
@@ -12,10 +11,10 @@ const Calendar = () => {
       </Head>
       <RoleHeader active="calendar" role="manager" />
       <div className="mx-auto w-full max-w-container p-4">
-        <Maintenance />
+        <Calendar />
       </div>
     </>
   )
 }
 
-export default Calendar
+export default CalendarHousekeeping

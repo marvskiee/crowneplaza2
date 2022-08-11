@@ -170,7 +170,7 @@ const PaymentLayout = ({ mode, action, reason, total, id }) => {
         {mode != 'confirmation' && (
           <Link
             href={
-              mode == 'cancel'
+              mode != 'cancel'
                 ? '/customer/reservation'
                 : '/customer/accommodation'
             }

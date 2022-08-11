@@ -32,7 +32,7 @@ export default async (req, res) => {
           }
         )
         if (accomodation) {
-          return res.status(200).json({ success: true, message: accomodation })
+          return res.status(200).json({ success: true, data: accomodation })
         }
         return res.status(400).json({ success: false })
       } catch (error) {

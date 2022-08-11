@@ -10,6 +10,8 @@ export const initialState = {
   accomodationList: [],
   reservationList: [],
   activeSidebar: 0,
+  adminModalData: null,
+  selectedData: [],
 }
 
 export const AppReducer = (state, action) => {
@@ -157,6 +159,24 @@ export const AppReducer = (state, action) => {
         profileModalStatus: false,
         isAuth: true,
         user: action.value,
+      }
+    }
+    case 'ADMIN_MODAL_DATA': {
+      return {
+        ...state,
+        adminModalData: action.value,
+      }
+    }
+    case 'SET_SELECTED_DATA': {
+      return {
+        ...state,
+        selectedData: action.value,
+      }
+    }
+    case 'CLEAR_SELECTED_DATA': {
+      return {
+        ...state,
+        selectedData: null,
       }
     }
   }

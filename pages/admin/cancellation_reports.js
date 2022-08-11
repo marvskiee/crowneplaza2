@@ -33,22 +33,6 @@ const Cancellation = () => {
       key: 'reason',
     },
   ]
-  const data_items = [
-    {
-      id: '10001',
-      reference: '00818237681',
-      channel: 'Gcash',
-      amount: '28000',
-      reason: '1',
-    },
-    {
-      id: '10002',
-      reference: '87156781548787',
-      channel: 'Bank Transfer',
-      amount: '12000',
-      reason: '2',
-    },
-  ]
   return (
     <>
       <Head>
@@ -56,6 +40,7 @@ const Cancellation = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminMain
+        searchKey="_id"
         title="Cancellation Reports"
         data_headers={data_headers}
         data_items={data}

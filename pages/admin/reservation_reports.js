@@ -6,9 +6,10 @@ import { reservationReports } from '../../services/reservation.services'
 const ReservationReports = () => {
   const [data, setData] = useState()
   useEffect(async () => {
-    const { success, data } = await reservationReports()
-    if (success) {
-      setData(data)
+    const res = await reservationReports()
+    if (res.success) {
+      console.log(res)
+      setData(res?.data)
     }
   }, [])
   const data_headers = [
@@ -18,7 +19,7 @@ const ReservationReports = () => {
     },
     {
       name: 'Name',
-      key: 'name',
+      key: 'customerName',
     },
     {
       name: 'Check-in',
@@ -41,9 +42,13 @@ const ReservationReports = () => {
       key: 'noOfExtraBed',
     },
     {
-      name: 'Voucher Code',
-      key: 'voucherCode',
+      name: 'Status',
+      key: 'status',
     },
+    // {
+    //   name: 'Voucher Code',
+    //   key: 'voucherCode',
+    // },
   ]
   const data_items = [
     {
@@ -74,6 +79,7 @@ const ReservationReports = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminMain
+        searchKey="_id"
         title="Reservation Reports"
         data_headers={data_headers}
         data_items={data}

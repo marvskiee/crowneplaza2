@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
-import { AdminMain, AdminSidebar } from '../../components'
+import { AdminMain } from '../../components'
+import { useAppContext } from '../../context/AppContext'
+import { getAllStaff } from '../../services/staff.services'
 
 const Housekeeping = () => {
+  const { state, dispatch } = useAppContext()
+
   const data_headers = [
     {
       name: 'ID No#',
-      key: 'id',
+      key: '_id',
     },
     {
       name: 'Email',
@@ -17,30 +21,21 @@ const Housekeeping = () => {
       key: 'name',
     },
     {
-      name: 'Number',
-      key: 'number',
+      name: 'Contact',
+      key: 'contact',
     },
     {
       name: 'Shift',
       key: 'shift',
     },
   ]
-  const data_items = [
-    {
-      id: '10001',
-      email: 'johndow@gmail.com',
-      name: 'John Doe',
-      number: '89',
-      shift: 'Morning',
-    },
-    {
-      id: '10002',
-      email: 'steveharve@gmail.com ',
-      name: 'Steve Harvey',
-      number: '90',
-      shift: 'Night',
-    },
-  ]
+  useEffect(async () => {
+    dispatch({ type: 'CLEAR_SELECTED_DATA' })
+    const { success, data } = await getAllStaff('housekeeping')
+    if (success) {
+      dispatch({ type: 'SET_SELECTED_DATA', value: data })
+    }
+  }, [])
   return (
     <>
       <Head>
@@ -48,9 +43,10 @@ const Housekeeping = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <AdminMain
+        searchKey="email"
         title="Housekeeping"
         data_headers={data_headers}
-        data_items={data_items}
+        data_items={state.selectedData}
       />
     </>
   )

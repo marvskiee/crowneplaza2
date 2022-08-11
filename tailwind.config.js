@@ -5,6 +5,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      gridColumn: {
+        'span-custom-1': '1',
+        'span-custom-2': '2',
+        'span-custom-3': '3',
+        'span-custom-4': '4',
+        'span-custom-5': '5',
+        'span-custom-6': '6',
+        'span-custom-7': '7',
+      },
       width: {
         icon: '40px',
       },

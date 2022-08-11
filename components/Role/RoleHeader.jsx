@@ -15,7 +15,12 @@ const RoleHeader = ({ active, role }) => {
     {
       name: 'Reserved List',
       link: '/receptionist/reserved_list',
-      defaultActive: 'reserved_list',
+      defaultActive: 'reserved',
+    },
+    {
+      name: 'Requested List',
+      link: '/receptionist/requested_list',
+      defaultActive: 'requested',
     },
   ]
   const housekeeping_links = [
@@ -44,7 +49,17 @@ const RoleHeader = ({ active, role }) => {
     {
       name: 'Reserved List',
       link: '/manager/reserved_list',
-      defaultActive: 'reserved_list',
+      defaultActive: 'reserved',
+    },
+    {
+      name: 'Requested Rooms',
+      link: '/manager/requested_list',
+      defaultActive: 'requested',
+    },
+    {
+      name: 'Cancelled List',
+      link: '/manager/cancelled_list',
+      defaultActive: 'cancelled',
     },
     {
       name: 'Housekeeping',
@@ -62,7 +77,7 @@ const RoleHeader = ({ active, role }) => {
   return (
     <div className=" sticky top-0 z-10 flex items-center justify-between bg-white px-2">
       <div>
-        <Link href="/customer">
+        <Link href="">
           <p className="m-4 cursor-pointer border-b-4 border-emerald-400 text-2xl font-bold">
             Crowné Plaza
           </p>

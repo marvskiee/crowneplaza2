@@ -8,6 +8,7 @@ module.exports = {
 
     return config
   },
+  images: { domains: ['firebasestorage.googleapis.com'] },
   // reactStrictMode: false,
   // webpack5: true,
   optimizeFonts: false,

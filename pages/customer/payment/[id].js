@@ -33,7 +33,7 @@ const Payment = () => {
   const paymentHandler = async (data) => {
     console.log(data)
     const newData = {
-      status: 'Reserved',
+      status: 'reserved',
     }
     const update_res = await updateStatus(id, newData)
     if (update_res.success) {

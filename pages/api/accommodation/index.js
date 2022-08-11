@@ -15,7 +15,7 @@ export default async (req, res) => {
           data: accomodation,
         })
       } catch (error) {
-        res.status(400).json({ success: false })
+        res.status(400).json({ success: false, errors: error.message })
       }
       break
 
@@ -26,7 +26,9 @@ export default async (req, res) => {
       } catch (error) {
         res.status(400).json({
           success: false,
-          message: error.message,
+          errors: {
+            roomNameError: error.code === 11000 && 'Room Name already exist!',
+          },
         })
       }
       break

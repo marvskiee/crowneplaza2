@@ -41,7 +41,6 @@ const Header = ({ active }) => {
     if (!mounted.current) {
       load()
     }
-    // console.log(state)
   })
 
   return (

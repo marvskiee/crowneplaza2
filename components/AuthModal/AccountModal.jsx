@@ -13,6 +13,7 @@ const AccountModal = ({ active, modal }) => {
     if (res.success) {
       dispatch({ type: 'LOGOUT' })
       modal(false)
+      router.push('/')
     }
   }
   return state?.profileModalStatus ? (

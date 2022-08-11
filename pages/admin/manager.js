@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 import { AdminMain, AdminSidebar } from '../../components'
+import { useAppContext } from '../../context/AppContext'
+import { getAllStaff } from '../../services/staff.services'
 
 const Manager = () => {
+  const { state, dispatch } = useAppContext()
+
   const data_headers = [
     {
       name: 'ID No#',
-      key: 'id',
+      key: '_id',
     },
     {
       name: 'Email',
@@ -17,24 +21,18 @@ const Manager = () => {
       key: 'name',
     },
     {
-      name: 'Number',
-      key: 'number',
+      name: 'Contact',
+      key: 'contact',
     },
   ]
-  const data_items = [
-    {
-      id: '10001',
-      email: 'johndow@gmail.com',
-      name: 'John Doe',
-      number: '89',
-    },
-    {
-      id: '10002',
-      email: 'steveharve@gmail.com ',
-      name: 'Steve Harvey',
-      number: '90',
-    },
-  ]
+  useEffect(async () => {
+    dispatch({ type: 'CLEAR_SELECTED_DATA' })
+
+    const { success, data } = await getAllStaff('manager')
+    if (success) {
+      dispatch({ type: 'SET_SELECTED_DATA', value: data })
+    }
+  }, [])
   return (
     <>
       <Head>
@@ -43,8 +41,9 @@ const Manager = () => {
       </Head>
       <AdminMain
         title="Manager"
+        searchKey="email"
         data_headers={data_headers}
-        data_items={data_items}
+        data_items={state.selectedData}
       />
     </>
   )

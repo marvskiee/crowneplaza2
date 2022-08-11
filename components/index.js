@@ -28,3 +28,21 @@ export { default as NavItems } from './Role/NavItems'
 export { default as ReservedCardModal } from './Receptionist/ReservedCardModal'
 
 export { default as HousekeepingRooms } from './Housekeeping/HousekeepingRooms'
+
+export { default as VoucherModal } from './Modal/VoucherModal'
+export { default as AdminModalManager } from './Modal/AdminModalManager'
+
+export { default as GuestModal } from './Modal/GuestModal'
+export { default as ManagerModal } from './Modal/ManagerModal'
+export { default as SupervisorModal } from './Modal/SupervisorModal'
+export { default as OtherStaffModal } from './Modal/OtherStaffModal'
+export { default as RoomModal } from './Modal/RoomModal'
+
+export { default as AccommodationCard } from './Layout/AccommodationCard'
+export { default as BookCard } from './Layout/BookCard'
+export { default as ReservedList } from './Layout/ReservedList'
+export { default as HousekeepingRoom } from './Housekeeping/HousekeepingRoom'
+export { default as RoomRecord } from './Housekeeping/RoomRecord'
+export { default as Calendar } from './Housekeeping/Calendar'
+export { default as Housekeeping } from './Housekeeping/Housekeeping'
+export { default as CancelledList } from './Layout/CancelledList'

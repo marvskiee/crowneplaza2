@@ -12,7 +12,7 @@ export default async (req, res) => {
   switch (method) {
     case 'GET':
       try {
-        const reservation = await Reservation.find({ user_id: id })
+        const reservation = await Reservation.findById(id)
         res.status(200).json({
           success: true,
           data: reservation,

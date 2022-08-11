@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import { HousekeepingRooms, Loading, RoleHeader } from '../../../components'
-import { getAllAccommodation } from '../../../services/accomodation.services'
+import { getActiveAccommodation } from '../../../services/accommodation.services'
 import { useAppContext } from '../../../context/AppContext'
 const Rooms = () => {
   const { state, dispatch } = useAppContext()
   const { isLoading, accomodationList } = state
   useEffect(async () => {
     dispatch({ type: 'ACCOMODATION_REQUEST' })
-    const res = await getAllAccommodation()
+    const res = await getActiveAccommodation()
 
     if (res.success) {
       setTimeout(() => {

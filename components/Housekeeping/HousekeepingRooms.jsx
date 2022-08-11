@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import Loading from '../Customized/Loading'
-
+import Image from 'next/image'
 const HousekeepingRooms = ({ isLoading, list, active }) => {
   return (
     <>
@@ -12,15 +12,18 @@ const HousekeepingRooms = ({ isLoading, list, active }) => {
           {list.length > 0 ? (
             <div className="mx-2 my-2 mb-auto grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {list &&
-                list.map(({ name, _id }, index) => (
+                list.map(({ roomName, image, _id }, index) => (
                   <div className="p-4" key={index}>
-                    <div className=" w-50 h-40">
-                      <img
-                        src="/pres_suite.jpg"
-                        className="h-full w-full rounded-lg object-cover drop-shadow-md"
+                    <div className=" w-50 flex h-40 justify-center">
+                      <Image
+                        height={250}
+                        width={400}
+                        src={image || '/thumbnail.png'}
+                        alt={roomName}
+                        className="aspect-video w-full rounded-lg object-cover drop-shadow-md sm:w-72"
                       />
                     </div>
-                    <p className="py-2 pt-4 text-center text-xl">{name}</p>
+                    <p className="py-2 pt-4 text-center text-xl">{roomName}</p>
                     <p className="text-center">
                       <Link
                         href={

@@ -11,7 +11,7 @@ const AdminSidebar = ({ nav }) => {
   const { activeSidebar } = state
   const managementLinks = [
     {
-      name: 'Guest',
+      name: 'Guests',
       link: '/admin/guests',
       subItem: null,
     },
@@ -79,6 +79,11 @@ const AdminSidebar = ({ nav }) => {
       link: '/admin/cancellation_reports',
       subItem: null,
     },
+    {
+      name: 'Voucher',
+      link: '/admin/voucher',
+      subItem: null,
+    },
   ]
   const housekeeping = [
     {
@@ -109,7 +114,7 @@ const AdminSidebar = ({ nav }) => {
             {link ? (
               <Link href={link}>
                 <p
-                  className={`cursor-pointer py-2  px-10 transition-all hover:bg-slate-900 hover:text-white ${
+                  className={`cursor-pointer py-2 px-10  text-sm transition-all hover:bg-slate-900 hover:text-white ${
                     activePage == link ? 'bg-slate-900 text-white' : ''
                   }`}
                 >
@@ -127,7 +132,7 @@ const AdminSidebar = ({ nav }) => {
                   }
                   className=" flex cursor-pointer justify-between py-2  px-10 transition-all hover:bg-slate-900 hover:text-white"
                 >
-                  <p>{name}</p>
+                  <p className="text-sm">{name}</p>
                   <span>
                     {index == activeSidebar ? <ArrowUp /> : <ArrowDown />}
                   </span>
@@ -143,7 +148,7 @@ const AdminSidebar = ({ nav }) => {
                         <p
                           className={`${
                             activePage == link ? 'bg-slate-900  text-white' : ''
-                          } cursor-pointer px-16 py-2 hover:bg-slate-900 hover:text-white`}
+                          } cursor-pointer px-16 py-2 text-sm hover:bg-slate-900 hover:text-white`}
                         >
                           {name}
                         </p>
@@ -154,11 +159,11 @@ const AdminSidebar = ({ nav }) => {
             )}
           </div>
         ))}
-        <p className="p-4">House Keeping</p>
+        <p className="p-4 text-sm">House Keeping</p>
         {housekeeping.map(({ name, link }, index) => (
           <Link href={link} key={index}>
             <p
-              className={`cursor-pointer py-2  px-10 hover:bg-slate-900 hover:text-white ${
+              className={`cursor-pointer py-2 px-10  text-sm hover:bg-slate-900 hover:text-white ${
                 activePage == link ? 'bg-slate-900 text-white' : ''
               }`}
             >
@@ -168,7 +173,7 @@ const AdminSidebar = ({ nav }) => {
         ))}
         <Link href="/role">
           <p
-            className={`cursor-pointer py-2  px-10 hover:bg-slate-900 hover:text-white`}
+            className={`cursor-pointer py-2 px-10  text-sm hover:bg-slate-900 hover:text-white`}
           >
             Logout
           </p>

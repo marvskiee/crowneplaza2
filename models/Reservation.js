@@ -1,15 +1,15 @@
 const mongoose = require('mongoose')
 
 const ReservationSchema = new mongoose.Schema({
+  image: {
+    type: String,
+    required: [true, 'Please fill up this field'],
+  },
   name: {
     type: String,
     required: [true, 'Please fill up this field'],
   },
   roomType: {
-    type: String,
-    required: [true, 'Please fill up this field'],
-  },
-  name: {
     type: String,
     required: [true, 'Please fill up this field'],
   },
@@ -53,7 +53,6 @@ const ReservationSchema = new mongoose.Schema({
   },
   user_id: {
     type: String,
-    required: [true, 'Please fill up this field'],
   },
   accomodation_id: {
     type: String,
@@ -67,6 +66,7 @@ const ReservationSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Please fill up this field'],
   },
+  vaccination: { type: [{ type: String }] },
 })
 
 module.exports =
